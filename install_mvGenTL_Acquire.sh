@@ -116,13 +116,13 @@ if [ "$USE_DEFAULTS" == "YES" ] ; then
 fi
 
 
-# Get the targets plattform and if it is called "i686" we know it is a x86 system, else it s x86_64
+# Get the targets platform and if it is called "i686" we know it is a x86 system, else it s x86_64
 TARGET=$(uname -m)
 if [ "$TARGET" == "i686" ]; then
    TARGET="x86"
 fi
 
-# Get the sourcedir (the directory where the files for the installation are) and cd to it
+# Get the source directory (the directory where the files for the installation are) and cd to it
 # (The script file must be in the same directory as the source TGZ) !!!
 if which dirname >/dev/null; then
     SCRIPTSOURCEDIR=($PWD"/"$(dirname $0))
@@ -161,7 +161,7 @@ if [ "$( ls | grep -c 'mvGenTL_Acquire.*\.tgz' )" != "0" ] ; then
   ACT=$API-$TARGET-$VERSION
 fi
 
-# Check if tarfile is correct for the system architecture
+# Check if tar-file is correct for the system architecture
 if [ "$TARGET" == "x86_64"  ]; then
   if [ "`echo $TARNAME | grep -c x86_ABI2`" != "0" ]; then
     echo "-----------------------------------------------------------------------------------"
@@ -196,7 +196,7 @@ if [ "$USER" == "" ]; then
   echo "-----------------------------------------------------------------------------------"
   echo "  ABORTING: Script could not determine a valid user!  " 
   echo "-----------------------------------------------------------------------------------"
-  echo "  This script could not determin the user of this shell"
+  echo "  This script could not determine the user of this shell"
   echo "  Please make sure this is a valid login shell!"
   exit
 fi
@@ -509,8 +509,8 @@ else
       GENILIBPATH=Linux64_x64
    fi
    # tests below do not check for *commented out* link lines
-   # must later add substring check
-   # genicam libs
+   # must later add sub-string check
+   # GenICam libs
    if grep -q "$DEF_DIRECTORY/runtime/bin/$GENILIBPATH" $GENICAM_LDSOCONF_FILE; then
       echo "$DEF_DIRECTORY/runtime/bin/$GENILIBPATH already defined in" $GENICAM_LDSOCONF_FILE.
    else
